@@ -1,0 +1,16 @@
+.tc__container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 1px solid #888888;
+  border-radius: 10px;
+  margin-top: 20px;
+
+  .tc__circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #888888;
+    margin: 0 10px;
+  }
+}

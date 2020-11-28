@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import InputPage from './pages/InputPage';
+import { AppContextProvider } from './context';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContextProvider>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <Router>
+          <Switch>
+            <Route path="/input">
+              <InputPage />
+            </Route>
+            <Route path="/output">
+              <InputPage />
+            </Route>
+            <Route path="/">
+              <InputPage />
+            </Route>
+          </Switch>
+        </Router>
+      </MuiPickersUtilsProvider>
+    </AppContextProvider>
   );
 };
 
