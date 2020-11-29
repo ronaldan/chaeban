@@ -43,7 +43,7 @@ const OutputPage = () => {
         label="Git Repository"
         text={
           <Link href="https://github.com" style={{ color: theme.textColor }}>
-            https://github.com/
+            https://github.com/ronaldan/chaeban
           </Link>
         }
         theme={theme}
