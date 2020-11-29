@@ -1,0 +1,22 @@
+.outputpage__container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 25%;
+
+  .outputpage__textwithlabel {
+    margin-top: 30px;
+
+    .outputpage__label {
+      font-size: 15px;
+    }
+
+    .outputpage__text {
+      font-size: 20px;
+      margin-top: 5px;
+    }
+  }
+}

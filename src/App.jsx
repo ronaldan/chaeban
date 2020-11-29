@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import InputPage from './pages/InputPage';
+import OutputPage from './pages/OutputPage';
 import { AppContextProvider } from './context';
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
               <InputPage />
             </Route>
             <Route path="/output">
-              <InputPage />
+              <OutputPage />
             </Route>
             <Route path="/">
               <InputPage />

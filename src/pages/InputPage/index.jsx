@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -12,28 +13,35 @@ import './style.scss';
 import { AppContext } from '../../context';
 import { Themes } from '../../constants';
 import ThemeColors from '../../components/ThemeColors';
+import { useHistory } from 'react-router-dom';
 
 const themeNames = Object.keys(Themes);
 
 const InputPage = () => {
-  const { toggleTheme } = useContext(AppContext);
+  const { themeType, toggleTheme } = useContext(AppContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [text, setText] = useState('');
-  const [selectedThemeType, setSelectedThemeType] = React.useState(
-    themeNames[0]
-  );
+  const [message, setMessage] = useState('');
+  const [selectedThemeType, setSelectedThemeType] = React.useState(themeType);
+  const history = useHistory();
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-  const handleTextChange = (event) => {
-    setText(event.target.value);
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
   };
 
   const handleChangeTheme = (event) => {
     setSelectedThemeType(event.target.value);
     toggleTheme(event.target.value);
+  };
+
+  const onLaunch = () => {
+    history.push('/output', {
+      selectedDate,
+      message
+    });
   };
 
   return (
@@ -54,13 +62,13 @@ const InputPage = () => {
       <TextField
         className="inputpage__text"
         id="outlined-multiline-static"
-        label="Text"
+        label="Message"
         fullWidth
         multiline
         rows={10}
         variant="outlined"
-        value={text}
-        onChange={handleTextChange}
+        value={message}
+        onChange={handleMessageChange}
       />
       <FormControl component="fieldset">
         <FormLabel component="legend">Themes</FormLabel>
@@ -81,6 +89,14 @@ const InputPage = () => {
         </RadioGroup>
       </FormControl>
       <ThemeColors />
+      <Button
+        className="inputpage__button"
+        variant="contained"
+        color="primary"
+        onClick={onLaunch}
+      >
+        Launch
+      </Button>
     </div>
   );
 };
